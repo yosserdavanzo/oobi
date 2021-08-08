@@ -1,20 +1,17 @@
 #include <Servo.h> 
 #include "src/body.h"
 
-// const int BASE_SERVO_PIN = 13;
-// Servo baseServo;
-// int FACE_UP = 2;
-// int FACE_DOWN = 180;
+Body oobi;
+
 
 void setup() {
-  Body oobi();
+  oobi.home();
 
   Serial.begin(9600);
 }
 
 void loop() {
-  // baseServo.write(FACE_UP);
-  // delay(5000);
-  // baseServo.write(FACE_DOWN);
-  // delay(1000);
+  oobi.home();
+
+  
 }
