@@ -1,4 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "sketch": "oobi_main\\oobi_main.ino"
-}
