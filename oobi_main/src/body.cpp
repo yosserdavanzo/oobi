@@ -1,17 +1,38 @@
 #include "body.h"
 
 
-Body::Body(bool const &skip_home){
+Body::Body(bool const &homing){
     baseServo.attach(BASE_SERVO_PIN);
     faceServo.attach(FACE_SERVO_PIN);
 
-    if( !skip_home)
+    if(homing)
         this->home();
 }
 
 
-void Body::home(){
+void const Body::home(){
   faceServo.write(FACE_UP);
   //TODO Pick a  home for base
   baseServo.write(BASE_CENTER);
+}
+
+
+int const Body::readFace(){
+    return faceServo.read();
+}
+
+int const Body::readBase(){
+    return baseServo.read();
+}
+
+void const Body::writeFace(int const &angle){
+    faceServo.write(constrain(angle, FACE_UP, FACE_DOWN));
+    delay(200);
+    return;
+}
+
+void const Body::writeBase(int const &angle){
+    baseServo.write(constrain(angle, BASE_RIGHT, BASE_LEFT));
+    delay(200);
+    return;
 }
