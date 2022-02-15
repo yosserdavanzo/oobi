@@ -11,9 +11,8 @@ Body::Body(bool const &homing){
 
 
 void const Body::home(){
-  faceServo.write(FACE_UP);
-  //TODO Pick a  home for base
-  baseServo.write(BASE_CENTER);
+    this->writeFace(FACE_UP);
+    this->writeBase(BASE_CENTER);
 }
 
 

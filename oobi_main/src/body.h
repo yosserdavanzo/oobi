@@ -6,24 +6,23 @@
 class Body{
     private:
         // FACE
-        const  int FACE_SERVO_PIN = 13;
+        const  int FACE_SERVO_PIN = 10;
         Servo faceServo;
 
         // BASE
-        const int BASE_SERVO_PIN = 2;
+        const int BASE_SERVO_PIN = 9;
         Servo baseServo;
 
 
     public:
         // CONSTs
         // Face
-        // TODO VERify
-        const int FACE_UP = 2;
-        const int FACE_DOWN = 178;
+        const int FACE_UP = 20;
+        const int FACE_DOWN = 180;
 
         // Base
-        // TODO VERify
         const int BASE_LEFT = 178;
+        // TODO: off center by a bit
         const int BASE_RIGHT = 2;
         const int BASE_CENTER = 90;
 
