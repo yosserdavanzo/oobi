@@ -5,14 +5,19 @@
 
 class Body{
     private:
-        // FACE
+        // FACE MOTOR
         const  int FACE_SERVO_PIN = 10;
         Servo faceServo;
 
-        // BASE
+        // BASE MOTOR
         const int BASE_SERVO_PIN = 9;
         Servo baseServo;
 
+        // ROTARY SENSOR
+        const int POT_PIN = A0;
+        // Moves Clockwise
+        const int POT_MIN = 0;
+        const int POT_MAX = 1023;
 
     public:
         // CONSTs
@@ -26,7 +31,11 @@ class Body{
         const int BASE_RIGHT = 2;
         const int BASE_CENTER = 90;
 
-        // FUNCs
+        // Roll Reader
+        const int POT_ANGLE_MIN = 0; 
+        const int POT_ANGLE_MAX = 270; 
+
+        // Movement
         void const home();
         Body(bool const &homing=true);
 
@@ -35,4 +44,9 @@ class Body{
 
         void const writeFace(int const &angle);
         void const writeBase(int const &angle);
+
+        // Sensors
+        // returns: 0 - 270 deg
+        int const readRoll();
+
 };

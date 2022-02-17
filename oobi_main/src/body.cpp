@@ -1,6 +1,5 @@
 #include "body.h"
 
-
 Body::Body(bool const &homing){
     baseServo.attach(BASE_SERVO_PIN);
     faceServo.attach(FACE_SERVO_PIN);
@@ -9,12 +8,10 @@ Body::Body(bool const &homing){
         this->home();
 }
 
-
 void const Body::home(){
     this->writeFace(FACE_UP);
     this->writeBase(BASE_CENTER);
 }
-
 
 int const Body::readFace(){
     return faceServo.read();
@@ -34,4 +31,8 @@ void const Body::writeBase(int const &angle){
     baseServo.write(constrain(angle, BASE_RIGHT, BASE_LEFT));
     delay(200);
     return;
+}
+
+int const Body::readRoll(){
+    return map(analogRead(POT_PIN), POT_MIN, POT_MAX, POT_ANGLE_MIN, POT_ANGLE_MAX);
 }
