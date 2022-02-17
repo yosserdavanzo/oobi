@@ -1,8 +1,8 @@
 #include "body.h"
 
 Body::Body(bool const &homing){
-    baseServo.attach(BASE_SERVO_PIN);
-    faceServo.attach(FACE_SERVO_PIN);
+    this->attachBase();
+    this->attachFace();
 
     if(homing)
         this->home();
@@ -11,6 +11,22 @@ Body::Body(bool const &homing){
 void const Body::home(){
     this->writeFace(FACE_UP);
     this->writeBase(BASE_CENTER);
+}
+
+void const Body::attachFace(){
+    baseServo.attach(FACE_SERVO_PIN);
+}
+
+void const Body::attachBase(){
+    baseServo.attach(BASE_SERVO_PIN);
+}
+
+void const Body::detachFace(){
+    baseServo.detach();
+}
+
+void const Body::detachBase(){
+    baseServo.detach();
 }
 
 int const Body::readFace(){
@@ -23,13 +39,13 @@ int const Body::readBase(){
 
 void const Body::writeFace(int const &angle){
     faceServo.write(constrain(angle, FACE_UP, FACE_DOWN));
-    delay(200);
+    delay(MOVE_DELAY);
     return;
 }
 
 void const Body::writeBase(int const &angle){
     baseServo.write(constrain(angle, BASE_RIGHT, BASE_LEFT));
-    delay(200);
+    delay(MOVE_DELAY);
     return;
 }
 

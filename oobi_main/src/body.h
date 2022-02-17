@@ -13,6 +13,9 @@ class Body{
         const int BASE_SERVO_PIN = 9;
         Servo baseServo;
 
+        // Delay after moving
+        const int MOVE_DELAY = 200;
+
         // ROTARY SENSOR
         const int POT_PIN = A0;
         // Moves Clockwise
@@ -38,6 +41,13 @@ class Body{
         // Movement
         void const home();
         Body(bool const &homing=true);
+
+        void const attachFace();
+        void const attachBase();
+
+        void const detachFace();
+        void const detachBase();
+
 
         int const readFace();
         int const readBase();
